@@ -1,6 +1,5 @@
 package package1;
 
-import java.awt.Component;
 import java.awt.Graphics;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -11,9 +10,13 @@ import javax.swing.JPanel;
 public class Dessin extends JPanel  {
 	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * stocke la liste des trains ajoutées Ã  cette zone de dessin.
      */
-    private final List<IObjetDessinable > objDessin = new CopyOnWriteArrayList();
+    private final List<IObjetDessinable > objDessin = new CopyOnWriteArrayList<IObjetDessinable>();
 
     /**
      * retourne la largeur de la zone de dessin.
@@ -84,7 +87,9 @@ public class Dessin extends JPanel  {
     public void animer() {
         //  dessiner les Objets que contient le dessin
         for (IObjetDessinable c : objDessin) {
-        	c.deplacer();
+        	if (c instanceof IObjetAnimable) {
+        		 ((IObjetAnimable) c).deplacer();
+        	}
             
         }
     }
