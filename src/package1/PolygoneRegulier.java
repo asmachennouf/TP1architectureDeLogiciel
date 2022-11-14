@@ -45,4 +45,10 @@ public  class PolygoneRegulier extends FormeCirculaireReguliere {
         return leContour;
     }
 
+	@Override
+	public void deplacer() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

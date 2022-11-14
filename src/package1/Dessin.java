@@ -7,7 +7,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import javax.swing.JPanel;
 
 
-public class Dessin extends JPanel  {
+public class Dessin extends JPanel {
 	
 	/**
 	 * 
@@ -16,7 +16,7 @@ public class Dessin extends JPanel  {
 	/**
      * stocke la liste des trains ajoutées Ã  cette zone de dessin.
      */
-    private final List<IObjetDessinable > objDessin = new CopyOnWriteArrayList<IObjetDessinable>();
+	 private final List<IObjetDessinable> objDessin = new CopyOnWriteArrayList<IObjetDessinable>();
 
     /**
      * retourne la largeur de la zone de dessin.
@@ -88,7 +88,7 @@ public class Dessin extends JPanel  {
         //  dessiner les Objets que contient le dessin
         for (IObjetDessinable c : objDessin) {
         	if (c instanceof IObjetAnimable) {
-        		 ((IObjetAnimable) c).deplacer();
+        		((IObjetAnimable)c).deplacer();
         	}
             
         }

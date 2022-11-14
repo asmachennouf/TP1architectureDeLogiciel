@@ -6,6 +6,8 @@ public interface IObjetDessinable {
 	
 	void dessiner(Graphics g);
 
+	void deplacer();
+
 	
 
 	

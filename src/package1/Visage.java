@@ -2,7 +2,7 @@ package package1;
 
 import java.awt.Graphics;
 
-public class Visage implements IObjetDessinable{
+public class Visage implements IObjetAnimable{
 	
 	public static final int LARGEUR_DEFAUT =50;
 	
