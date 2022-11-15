@@ -1,8 +1,12 @@
 package package1;
 
-import java.awt.Graphics;
 
-public class Visage implements IObjetAnimable{
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
+public class Visage extends Forme{
 	
 	public static final int LARGEUR_DEFAUT =50;
 	
@@ -13,12 +17,6 @@ public class Visage implements IObjetAnimable{
 	public static final int HAUTEUR_MIN =15;
 	
 	public static final int DEPLACEMENT_DEFAUT =5;
-	
-	private Dessin d;
-	
-	private int xhg = 0;
-	
-	private int yhg = 0;
 	
 	private int largeur;
 	
@@ -38,9 +36,8 @@ public class Visage implements IObjetAnimable{
 	}
 	
 	public Visage(Dessin d, int xg, int yg, int larg, int haut) {
-		this.d = d;
-		this.xhg= xg;
-		this.yhg= yg;
+		
+		super(xg,yg,5.f, Color.BLACK,Color.PINK);
 		this.largeur = Math.max(larg,  LARGEUR_MIN);
 		this.hauteur = Math.max(haut,  HAUTEUR_MIN);
 	}
@@ -80,56 +77,40 @@ public class Visage implements IObjetAnimable{
 		impassible = !impassible;
 	}
 	
-	public void deplacerSansRebond() {
-		xhg += dx;
-		xhg += dy;
-	}
 	
-	public void deplacer() {
-		if (bordGaucheAtteint() || bordDroitAtteint()) {
-			inverserDx();
-		}
-		if(bordHautAtteint() || bordBasAtteint()) {
-			inverserDy();
-		}
-		deplacerSansRebond();
-	}
 	
-	public boolean bordGaucheAtteint() {
-		return (xhg < 0 );
-	}
 	
-	public boolean bordDroitAtteint() {
-		return ((xhg + largeur)> d.getLargeur() );
-	}
 	
-	public boolean bordHautAtteint(){
-		return (yhg < 0);
-	}
 	
-	public boolean bordBasAtteint() {
-		return ((yhg + hauteur)>= d.getHauteur() );
-	}
-	
-	public boolean bordAtteint() {
-		return bordDroitAtteint() ||  bordGaucheAtteint() || bordHautAtteint() || bordBasAtteint(); 
-	}
-	
+
 	
 	public void dessiner(Graphics g) {
-	   g.drawOval(xhg, yhg, largeur, hauteur);
+	  
+	   Graphics2D g2=(Graphics2D) g.create();
+	   g2.setColor(Color.BLACK);
+	   g2.setStroke(new BasicStroke(epaisseurTrait));
+       g2.drawOval(super.x, super.y, largeur, hauteur);
+       g2.setPaint(Color.PINK);
+       g2.fillOval(super.x, super.y, largeur, hauteur);
+       
 	   if(impassible) {
-		   g.drawLine(xhg +largeur /4, yhg +(2 * hauteur) /3,
-				   xhg + (3 * largeur) /4, yhg + (2 * hauteur)/ 3);
+		   g.drawLine(super.x +largeur /4, super.y +(2 * hauteur) /3,
+				   super.x + (3 * largeur) /4, super.y + (2 * hauteur)/ 3);
 	   } else {
-		   g.drawArc(xhg +largeur /4, yhg +(2 * hauteur) /3,
+		   g.drawArc(super.x +largeur /4, super.y +(2 * hauteur) /3,
 				   largeur /2, hauteur/ 5, -45, -90);
 	   }
 	   
 	   int largeurOeil = largeur / 5;
 	   int hauteurOeil = hauteur / 5;
-	   g.drawOval(xhg + largeurOeil, yhg +hauteurOeil, largeurOeil,hauteurOeil);
-	   g.drawOval(xhg + 3 * largeurOeil, yhg + hauteurOeil, largeurOeil,hauteurOeil);
+	   g.drawOval(super.x + largeurOeil, super.y +hauteurOeil, largeurOeil,hauteurOeil);
+	   g.drawOval(super.x + 3 * largeurOeil, super.y + hauteurOeil, largeurOeil,hauteurOeil);
+	}
+
+	@Override
+	public void deplacer() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -29,10 +29,9 @@ public class LancerApp1 {
 		// les objets formes graphique mouvement circulaire
 				d.ajouterObjet(new AnimationForme(new Etoile(350,100,50,8.f,Color.RED,Color.YELLOW), new MvtCirculaire(250,250,180,0,5)));
 				d.ajouterObjet(new AnimationForme(new PolygoneRegulier(5,240,40,40,4.0f,Color.DARK_GRAY, null), new MvtCirculaire(210,210,180,0,5)));
-			
+				d.ajouterObjet(new AnimationForme(new Visage(d,300,500,40,60), new MvtCirculaire(250,20,180,0,5)));
 		// les objets formes graphique fixe
-				d.ajouterObjet(new Etoile(100,100,50,8.f,Color.GREEN,Color.GREEN));
-				d.ajouterObjet(new PolygoneRegulier(5,150,30,30,4.0f,Color.BLACK, Color.BLACK));
+		
 		
 		// les trains de cercles avec image et en couleur
 		TrainCercle[] lesTrains= new TrainCercle[10];
@@ -43,11 +42,8 @@ public class LancerApp1 {
 		(float) Math.random()), d, 10, 10);
 		d.ajouterObjet(lesTrains[i]);
 		}
-		Visage v = new Visage(d);
-		d.ajouterObjet(v);
-		Forme f1 =new Etoile(350,100,50,8.f,Color.RED,Color.RED);
-		Forme f2 =new PolygoneRegulier(5,260,60,60,4.0f,Color.BLACK, null);
-		d.ajouterObjet(f1);d.ajouterObjet(f2);
+		
+		
 		
 		
 		while(true) {
