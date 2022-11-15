@@ -26,6 +26,14 @@ public class LancerApp1 {
 		// affiche la fenêtre
 		laFenetre.setVisible(true);
 		
+		// les objets formes graphique mouvement circulaire
+				d.ajouterObjet(new AnimationForme(new Etoile(350,100,50,8.f,Color.RED,Color.YELLOW), new MvtCirculaire(250,250,180,0,5)));
+				d.ajouterObjet(new AnimationForme(new PolygoneRegulier(5,240,40,40,4.0f,Color.DARK_GRAY, null), new MvtCirculaire(210,210,180,0,5)));
+			
+		// les objets formes graphique fixe
+				d.ajouterObjet(new Etoile(100,100,50,8.f,Color.GREEN,Color.GREEN));
+				d.ajouterObjet(new PolygoneRegulier(5,150,30,30,4.0f,Color.BLACK, Color.BLACK));
+		
 		// les trains de cercles avec image et en couleur
 		TrainCercle[] lesTrains= new TrainCercle[10];
 		lesTrains[0] = new TrainCercleImage(d, 10, imgVador); d.ajouterObjet(lesTrains[0]);
